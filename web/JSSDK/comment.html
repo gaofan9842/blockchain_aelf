@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>天津大学评论页</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/comment.css">
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+<style>
+    #web_bg{
+            position:fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            height:100%;
+            min-width: 1000px;
+            z-index:-10;
+            zoom: 1;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-position: center 0;
+            overflow:auto;
+    }
+</style>
+</head>
+<body>
+        <script type="text/javascript" src="js/aelf.min.js"></script>
+        <script type="text/javascript" src="js/connection.js"></script>
+        <script type="text/javascript">
+            //  *****************************
+
+            
+                var senderName = "";
+                var shopName = "";
+                var tempSenderName="";
+                var Myaddress = "";
+                var MyaddressHashed="";
+                var url=decodeURI(location.href);
+                var from = url.indexOf("?")+1;
+                for(var p=1;p<=4;p++){
+                    for(var i=from;i<=url.length-1;i++){
+                        if(url[i]=='?'){
+                            from =i+1;
+                            break;
+                        }
+                        if(p==1)senderName+=url[i];
+                        else if(p==2) Myaddress+=url[i];
+                        else if(p==3) MyaddressHashed+=url[i];
+                        else shopName+=url[i];
+                    }
+
+                }
+                tempSenderName = senderName;
+
+
+            </script>
+<!--
+    接受者的名字点赞评论时根据评论内容产生
+    每个Event函数调用时会根据接收者名字查询对应转钱账户
+    发送者的两个账户已经初始化完成
+    需要的数据
+    当前用户名字    senderName
+    当前商家名字    shopName
+ -->
+
+ <div class="wrapper">
+    
+        <div id="perInfoPage" style="display:none">
+                <div class="login-box">
+                    
+                    <div class="login-title " style="text-align: right">
+                        <button class="design" style="text-align: center" onclick="closeWindow()">x</button>
+                        <h1  style="text-align:center ">
+                            <small style="color: aliceblue">用 户 信 息 </small>
+                            
+                        </h1>
+                        
+                    </div>
+                    <div class="login-content ">
+                        <!-- <div class="form"> -->
+                            <!-- <form id="modifyPassword" class=".form-horizontal" action="" method="post">							 -->
+                                <p id="thePerScore" style="font-size: medium; padding-left: 4%;">Hello world </p>
+                                <p id="thePerHashedAdd" style="font-size: small; padding-left: 4%;">Hello world </p>
+                                <p id="thePerUnhashedAdd" style="font-size: small; padding-left: 4%;">Hello world </p>
+                                <p id="like" style="font-size: medium; padding-left: 4%;">Hello world </p>
+                                <p id="comment" style="font-size: medium;padding-left: 4%;">Hello world </p>
+                            <!-- </form> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+            
+        <div id="web_bg" style="background-image:url(img/tju.jpg);">
+<div class="commentAll">
+    <!--评论区域 begin-->
+    <img src="img/home.png" style="padding-left:200px;padding-top:2px;" onclick="backToHome()"/>
+   
+    <div class="reviewArea clearfix">
+        <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+        <a href="javascript:;" class="plBtn">评论</a>
+    </div>
+    <!--评论区域 end-->
+    <!--回复区域 begin-->
+    <div class="comment-show">
+
+    </div>
+    <!--回复区域 end-->
+    
+</div>
+<!--  -->
+
+
+
+
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexText.js"></script>
+
+<script type="text/javascript" src="js/comment_page_event.js"></script>
+
+
+<!--textarea高度自适应-->
+<script type="text/javascript">
+    $(function () {
+        $('.content').flexText();
+    });
+</script>
+  </div>
+</div>
+
+</body>
+
+</html>

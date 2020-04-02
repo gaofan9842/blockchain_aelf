@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>天津大学评论页</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/comment.css">
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <style>
+        #web_bg{
+                position:fixed;
+                top: 0;
+                left: 0;
+                width:100%;
+                height:100%;
+                min-width: 1000px;
+                z-index:-10;
+                zoom: 1;
+                background-color: #fff;
+                background-repeat: no-repeat;
+                background-size: cover;
+                -webkit-background-size: cover;
+                -o-background-size: cover;
+                background-position: center 0;
+                overflow:auto;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <script type="text/javascript" src="js/aelf.min.js"></script>
+    <script type="text/javascript" src="js/cross_chain.js"></script>
+    <div class="wrapper">
+
+        <div id="perInfoPage" style="display:none">
+            <div class="login-box">
+                <div class="login-title " style="text-align: right">
+                    <button class="design" style="text-align: center" onclick="closeWindow()">x</button>
+                    <h1  style="text-align:center ">
+                        <small style="color: aliceblue">账 户 信 息 </small>
+                    </h1>
+                </div>
+                <div class="login-content ">
+                    <p id="thePerScore" style="font-size: medium; padding-left: 4%;">Hello world </p>
+                    <p id="thePerHashedAdd" style="font-size: small; padding-left: 4%;">Hello world </p>
+                    <p id="thePerUnhashedAdd" style="font-size: small; padding-left: 4%;">Hello world </p>
+                    <p id="like" style="font-size: medium; padding-left: 4%;">Hello world </p>
+                    <p id="comment" style="font-size: medium;padding-left: 4%;">Hello world </p>
+                </div>
+            </div>
+        </div>
+                
+        <div id="web_bg" style="background-image:url(img/TJU7.jpg);">
+
+            <div class="commentAll">
+            <!--评论区域 begin-->
+                <img src="img/me.png"  style="padding-left:60px;" onclick="PerInf()"/>
+                <img src="img/offline.png" style="padding-left:180px;" onclick="exitButton()"/>
+                <div class="reviewArea clearfix" style="display: none">
+                    <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
+                    <a href="javascript:;" class="plBtn">评论</a>
+                </div>
+                <!--评论区域 end-->
+                <!--回复区域 begin-->
+                <div class="comment-show">
+
+                </div>
+                <!--回复区域 end-->
+            
+            </div>
+
+            <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+            <script type="text/javascript" src="js/jquery.flexText.js"></script>
+            <script type="text/javascript" src="js/user_info_db.js"></script>
+            <script type="text/javascript" src="js/comment_info_db.js"></script>
+            <script type="text/javascript" src="js/home.js"></script>
+            <!--textarea高度自适应-->
+            <script type="text/javascript">
+                $(function () {
+                    $('.content').flexText();
+                });
+            </script>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

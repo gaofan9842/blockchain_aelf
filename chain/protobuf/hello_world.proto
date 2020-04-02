@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+import "aelf_options.proto";
+import "google/protobuf/empty.proto";
+import "common.proto";
+
+option csharp_namespace = "HelloWorldContract";
+
+service HelloWorldContract {
+
+    option (aelf.csharp_state) = "HelloWorldContractState";
+
+    rpc InitializeHelloContract (InitializeHelloContractInput) returns (google.protobuf.Empty) {}
+
+    rpc likeEvent (TwoSidesAddress) returns (google.protobuf.Empty) { }
+
+    rpc dislikeEvent (TwoSidesAddress) returns (google.protobuf.Empty) { }
+
+    rpc commentEvent (CommentEventAddress) returns (google.protobuf.Empty) { }
+    
+    rpc middleTransfer (MiddleTransInfo) returns (google.protobuf.Empty) { }
+}
+
+message InitializeHelloContractInput {
+    Hash token_contract_system_name = 1;
+}
+
+message TwoSidesAddress {
+    string SenderAdd = 1;
+    string ReceiverAdd = 2;
+}
+
+
+message CommentEventAddress{
+    string SenderCommentAdd = 1;
+    string CommentContent = 2;
+}
+
+message MiddleTransInfo{
+    string To = 1;
+    string MySymbol = 2;
+    sint64 Amount = 3;
+}

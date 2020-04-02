@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "aelf_options.proto";
+import "google/protobuf/empty.proto";
+import "common.proto";
+
+option csharp_namespace = "MiddleManContract";
+
+service MiddleManContract {
+
+    option (aelf.csharp_state) = "MiddleManContractState";
+
+    rpc InitializeHelloContract (InitializeHelloContractInput) returns (google.protobuf.Empty) {}
+
+    rpc likeEvent (ReceiverAddress) returns (FinalScore) { }
+
+    rpc dislikeEvent (ReceiverAddress) returns (FinalScore) { }
+
+    rpc commentEvent (CommentEventAddress) returns (FinalScore) { }
+}
+
+message InitializeHelloContractInput {
+    Hash token_contract_system_name = 1;
+}
+
+message ReceiverAddress {
+    string MyAdd = 1;
+}
+
+message FinalScore{
+    sint64 MyMoney = 1;
+}
+
+message CommentEventAddress{
+    string MyCommentAdd = 1;
+    string CommentContent = 2;
+}

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AElf.Sdk.CSharp" Version="0.7.1-alpha.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Protobuf\Generated" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\protobuf\aelf_options.proto">
+      <Link>Protobuf/Proto/aelf_options.proto</Link>
+    </None>
+    <None Include="..\..\protobuf\middle_man.proto">
+      <Link>Protobuf/Proto/middle_man.proto</Link>
+    </None>
+    <None Include="..\..\protobuf\basic_contract_zero.proto">
+      <Link>Protobuf/Proto/basic_contract_zero.proto</Link>
+    </None>
+    <None Include="..\..\protobuf\token_contract.proto">
+      <Link>Protobuf/Proto/token_contract.proto</Link>
+    </None>
+  </ItemGroup>
+  <Target Name="Gen_proto" BeforeTargets="BeforeBuild">
+    <Exec Condition="!$([MSBuild]::IsOsPlatform(Windows))" Command="../../scripts/generate_contract_reference.sh token_contract.proto basic_contract_zero.proto; ../../scripts/generate_contract_code.sh middle_man.proto" />
+    <Exec Condition="$([MSBuild]::IsOsPlatform(Windows))" Command="..\..\scripts\generate_contract_reference.bat token_contract.proto basic_contract_zero.proto &amp; ..\..\scripts\generate_contract_code.bat middle_man.proto" />
+  </Target>
+  <Target Name="UpdateGeneratedFiles" DependsOnTargets="Gen_proto" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <Compile Include="./Protobuf/Generated/*.cs" />
+    </ItemGroup>
+  </Target>
+</Project>
