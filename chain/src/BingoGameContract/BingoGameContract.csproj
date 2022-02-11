@@ -7,7 +7,7 @@
     <PackageReference Include="AElf.Contracts.MultiToken" Version="0.7.1-alpha.1" />
     <PackageReference Include="AElf.Kernel.Types" Version="0.7.1-alpha.1" />
     <PackageReference Include="AElf.Sdk.CSharp" Version="0.7.1-alpha.1" />
-    <PackageReference Include="Google.Protobuf" Version="3.7.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.15.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Protobuf\Generated" />
